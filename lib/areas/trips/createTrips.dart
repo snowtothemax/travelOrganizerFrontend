@@ -15,8 +15,10 @@ class _CreateTripScreenState extends State<CreateTripScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomAppBar(
-      backButtonLabel: "Back",
-      forwardButtonLabel: "Next",
+      backButtonIcon: Icons.arrow_back,
+      forwardButtonIcon: Icons.add,
+      backButtonLabel: "",
+      forwardButtonLabel: "",
       pageTitle: "Create Trip",
       child: Padding(
         padding: EdgeInsets.all(16.0),

@@ -9,8 +9,10 @@ class TripsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAppBar(
-        backButtonLabel: "Back",
-        forwardButtonLabel: "Next",
+        backButtonIcon: Icons.arrow_back,
+        forwardButtonIcon: Icons.add,
+        forwardButtonLabel: "",
+        backButtonLabel: "",
         forwardButtonOnPressed: () {
           Navigator.push(
             context,
@@ -19,7 +21,7 @@ class TripsScreen extends StatelessWidget {
         },
         pageTitle: "Trips",
         child: ListView(children: [
-          ListItemWidget(elements: [
+          ListItemWidget(isEditMode: false, elements: [
             SelectableListItemWidget(
               title: "Max",
               content: "Max",

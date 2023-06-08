@@ -4,17 +4,21 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String pageTitle;
-  final String backButtonLabel;
-  final String forwardButtonLabel;
+  final IconData backButtonIcon;
+  final IconData forwardButtonIcon;
   final VoidCallback? backButtonOnPressed;
   final VoidCallback? forwardButtonOnPressed;
   final Widget child;
+  final String forwardButtonLabel;
+  final String backButtonLabel;
 
   const CustomAppBar({
     Key? key,
     required this.pageTitle,
-    required this.backButtonLabel,
+    required this.backButtonIcon,
+    required this.forwardButtonIcon,
     required this.forwardButtonLabel,
+    required this.backButtonLabel,
     this.backButtonOnPressed,
     this.forwardButtonOnPressed,
     required this.child,
@@ -22,24 +26,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(pageTitle),
         leading: backButtonOnPressed != null
-            ? IconButton(
-                icon: Icon(Icons.arrow_back),
+            ? TextButton.icon(
+                icon: Icon(backButtonIcon),
                 onPressed: backButtonOnPressed,
+                label: Text(backButtonLabel),
               )
             : null,
         actions: [
           if (forwardButtonOnPressed != null)
-            IconButton(
-              icon: Icon(Icons.arrow_forward),
-              onPressed: forwardButtonOnPressed,
-            ),
+            TextButton.icon(
+                icon: Icon(forwardButtonIcon),
+                onPressed: forwardButtonOnPressed,
+                label: Text(forwardButtonLabel)),
         ],
       ),
       body: Padding(
